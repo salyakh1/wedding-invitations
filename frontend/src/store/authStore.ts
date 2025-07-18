@@ -78,6 +78,23 @@ export const useAuthStore = create<AuthStore>()(
         set({ token, isAuthenticated: true });
         localStorage.setItem('token', token);
       },
+
+      updateProfile: async (data: Partial<User>) => {
+        set({ isLoading: true });
+        try {
+          const response = await authAPI.updateProfile(data);
+          if (response.success && response.data) {
+            set({ user: response.data, isLoading: false });
+            toast.success('Профиль обновлен успешно!');
+          } else {
+            throw new Error(response.error || 'Ошибка обновления профиля');
+          }
+        } catch (error: any) {
+          set({ isLoading: false });
+          toast.error(error.response?.data?.error || 'Ошибка обновления профиля');
+          throw error;
+        }
+      },
     }),
     {
       name: 'auth-storage',

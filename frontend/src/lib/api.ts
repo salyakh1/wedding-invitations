@@ -55,6 +55,11 @@ export const authAPI = {
     const response = await api.get('/auth/me');
     return response.data;
   },
+
+  updateProfile: async (data: any): Promise<ApiResponse> => {
+    const response = await api.put('/auth/profile', data);
+    return response.data;
+  },
 };
 
 export const templateAPI = {
@@ -193,4 +198,5 @@ export const orderAPI = {
   },
 };
 
-export default api; 
+export default api;
+export { api }; 
