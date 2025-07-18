@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "npm run build:frontend --workspace=wedding-invitations-frontend@1.0.0",
+  "buildCommand": "cd frontend && npm install && npm run build",
   "outputDirectory": "frontend/.next",
   "installCommand": "npm install",
   "framework": "nextjs",
