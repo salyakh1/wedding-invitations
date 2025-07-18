@@ -1,0 +1,8 @@
+backend/
+node_modules/
+.git/
+README.md
+*.log
+.env
+.env.local
+.env.production 
