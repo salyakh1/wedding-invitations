@@ -5,7 +5,6 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { useAuthStore } from '@/store/authStore'
-import { LoginRequest } from '@/types'
 import { Eye, EyeOff, Mail, Lock } from 'lucide-react'
 
 const loginSchema = z.object({
@@ -34,7 +33,7 @@ export default function LoginForm({ onSuccess, onSwitchToRegister }: LoginFormPr
 
   const onSubmit = async (data: LoginFormData) => {
     try {
-      await login(data as LoginRequest)
+      await login(data)
       onSuccess?.()
     } catch (error) {
       // Ошибка обрабатывается в store
