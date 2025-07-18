@@ -33,7 +33,15 @@ export default function LoginForm({ onSuccess, onSwitchToRegister }: LoginFormPr
 
   const onSubmit = async (data: LoginFormData) => {
     try {
-      await login(data)
+      // Убеждаемся, что поля не undefined
+      if (!data.email || !data.password) {
+        throw new Error('Email и пароль обязательны')
+      }
+      
+      await login({
+        email: data.email,
+        password: data.password,
+      })
       onSuccess?.()
     } catch (error) {
       // Ошибка обрабатывается в store
