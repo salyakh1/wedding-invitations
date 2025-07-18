@@ -214,6 +214,7 @@ export interface AuthStore {
   logout: () => void;
   setUser: (user: User) => void;
   setToken: (token: string) => void;
+  updateProfile: (data: Partial<User>) => Promise<void>;
 }
 
 export interface TemplateStore {
